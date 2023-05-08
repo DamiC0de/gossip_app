@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get 'contact', to: 'home#contact' # Route pour la page de contact
   get 'team', to: 'home#team' # Route pour la page de l'équipe
   
+  # Gossip
   get 'gossips/:id', to: 'home#gossips_show', as: 'gossips_show' # Route pour la page d'un potin
 
-  
+  # Hello User
+  get '/:name', to: 'home#hello' # Route pour la page d'accueil personnalisée
 end

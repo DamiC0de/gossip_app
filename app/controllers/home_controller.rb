@@ -14,5 +14,9 @@ class HomeController < ApplicationController
     @gossip = Gossip.find(params[:id].to_i)
     @comments = Comment.find_by_gossip_id(@gossip.id)
   end
+
+  def hello
+    @name = params[:name].capitalize
+  end
   
 end
