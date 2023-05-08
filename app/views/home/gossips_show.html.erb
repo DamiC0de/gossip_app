@@ -1,0 +1,54 @@
+<%= render 'layouts/header'%>
+    <body class="d-flex flex-column h-100 bg-light">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                <div class="container px-5">
+                <a class="navbar-brand" href="<%= root_path %>"><span class="fw-bolder text-primary">Gossips</span></a>
+
+
+                    <%= render 'layouts/navbar'%>
+
+                </div>
+            </nav>
+
+    <div class="container px-5 my-5">
+      
+     
+      <br>
+      <p>
+        <strong>Auteur:</strong> <%= @gossip.author %><br>
+        <strong>Gossip:</strong> <%= @gossip.content %>
+      </p>
+      
+      <h2>Commentaires :</h2>
+      <% if @comments.any? %>
+        <% @comments.each do |comment| %>
+          <div class="card mb-2">
+            <div class="card-body">
+              <p class="card-text"><%= comment.content %></p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Aucun commentaire pour le moment.</p>
+      <% end %>
+      
+      <h3>Ajouter un commentaire :</h3>
+      <form action="/gossips/<%= @gossip.id %>/comment" method="post">
+        <div class="form-group">
+          <label for="comment_content">Votre commentaire :</label>
+          <textarea class="form-control" name="comment_content" id="comment_content" rows="4" cols="50"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </form>
+
+      <a class="btn btn-warning mt-4" href="/gossips/<%= @gossip_id %>/edit">Éditer le potin</a>
+      <a class="btn btn-secondary mt-4" href="/">Retour à la liste des potins</a>
+    </div>
+
+</main>
+<%= render 'layouts/footer'%>
+
+
+
