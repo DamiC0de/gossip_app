@@ -11735,3 +11735,11 @@ html {
   margin-top: 1.5vw ;
 }
 }
+
+.tchat {
+  position: relative;
+  height: 4vw;
+  width: 4vw;
+  max-height: 40rem;
+  max-width: 40rem;
+}

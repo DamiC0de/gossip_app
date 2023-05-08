@@ -14,13 +14,15 @@
 
     <div class="container px-5 my-5">
       
-     
-      <br>
-      <p>
-        <strong>Auteur:</strong> <%= @gossip.author %><br>
-        <strong>Gossip:</strong> <%= @gossip.content %>
+     <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline"><%= @gossip.author %> wrote<br></span></h1>
+     <img class="tchat" <%= image_tag 'tchat.png', alt: 'Description de l\'image' %>     
+
+
+      <div class="fs-3 fw-light text-muted"><%= @gossip.content %></div>
+
       </p>
-      
+      <hr>
+
       <h2>Commentaires :</h2>
       <% if @comments.any? %>
         <% @comments.each do |comment| %>
