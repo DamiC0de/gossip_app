@@ -1,6 +1,6 @@
 require 'csv'
 
-class Gossip
+class Gossip < ActiveRecord::Base
     attr_reader :id, :author, :content # Crée les getters pour les attributs id, author et content
   
     def initialize(id=nil, author, content) # Initialise l'objet Gossip avec un ID (optionnel), un auteur et un contenu
