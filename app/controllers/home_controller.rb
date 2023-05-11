@@ -10,6 +10,9 @@ class HomeController < ApplicationController
   def team
   end
 
+  def register
+  end
+
   def hello
     @name = params[:name].capitalize
   end

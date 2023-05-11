@@ -42,11 +42,16 @@
                                 <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">Latest Gossips</span></h2>
 
                                 <%= render '/layouts/home/latest_gossips'%>
+                                <%= link_to "Écrire un gossip", new_gossip_model_path, class: "btn btn-primary" %>
+
+                                <hr>
 
                                 <div class="d-flex justify-content-center fs-2 gap-4">
                                     <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a>
                                     <a class="text-gradient" href="#!"><i class="bi bi-linkedin"></i></a>
                                     <a class="text-gradient" href="#!"><i class="bi bi-github"></i></a>
+
+                                    
                                 </div>
                             </div>
                         </div>
