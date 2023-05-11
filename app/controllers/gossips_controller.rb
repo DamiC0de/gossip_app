@@ -1,7 +1,14 @@
 class GossipsController < ApplicationController
   def show
     @gossip = GossipModel.find(params[:id])
+    @comments = CommentModel.where(gossip_model_id: @gossip.id)
+
+    respond_to do |format|
+      format.html { render template: 'home/gossips_show' }
+      format.json { render json: @gossip }
+    end
   end
+
 
   def new
     @gossip = GossipModel.new
@@ -19,9 +26,9 @@ class GossipsController < ApplicationController
   def update
     @gossip = GossipModel.find(params[:id])
     if @gossip.update(gossip_params)
-      # rediriger vers quelque part si la mise à jour est réussie
+      redirect_to gossips_show_path(@gossip)
     else
-      # re-rendre la vue 'edit' si la mise à jour échoue
+      render :edit
     end
   end
 
@@ -31,9 +38,13 @@ class GossipsController < ApplicationController
     # rediriger vers quelque part
   end
 
+  def edit
+    @gossip = GossipModel.find(params[:id])
+  end
+
   private
 
   def gossip_params
-    params.require(:gossip).permit(:author, :content)
+    params.require(:gossip_model).permit(:author, :content)
   end
 end

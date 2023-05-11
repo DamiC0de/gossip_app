@@ -37,16 +37,18 @@
       <% end %>
       
       <h3>Ajouter un commentaire :</h3>
-      <form action="/gossips/<%= @gossip.id %>/comment" method="post">
+      <%= form_with(model: [ @gossip, CommentModel.new ], url: gossip_comments_path(@gossip), local: true) do |form| %>
         <div class="form-group">
-          <label for="comment_content">Votre commentaire :</label>
-          <textarea class="form-control" name="comment_content" id="comment_content" rows="4" cols="50"></textarea>
+          <%= form.label :content, "Votre commentaire :" %>
+          <%= form.text_area :content, rows: 4, class: "form-control" %>
         </div>
-        <button type="submit" class="btn btn-primary">Envoyer</button>
-      </form>
+        <%= form.submit "Envoyer", class: "btn btn-primary" %>
+      <% end %>
 
-      <a class="btn btn-warning mt-4" href="/gossips/<%= @gossip_id %>/edit">Éditer le potin</a>
-      <a class="btn btn-secondary mt-4" href="/">Retour à la liste des potins</a>
+
+      <%= link_to "Editer le potin", edit_gossip_path(@gossip), class: "btn btn-warning mt-4" %>
+      <%= link_to "Retour à la liste des potins", root_path, class: "btn btn-secondary mt-4" %>
+
     </div>
 
 </main>

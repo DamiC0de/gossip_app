@@ -1,13 +1,14 @@
 class CommentsController < ApplicationController
   def create
-    @comment = CommentModel.new(comment_params)
+    @gossip = GossipModel.find(params[:gossip_id])
+    @comment = @gossip.comment_models.build(comment_params)
     if @comment.save
-      # rediriger vers quelque part si la sauvegarde est réussie
+      redirect_to gossips_show_path(@gossip)
     else
-      # re-rendre la vue 'new' si la sauvegarde échoue
+      render 'home/goosips_show'
     end
   end
-
+  
   def update
     @comment = CommentModel.find(params[:id])
     if @comment.update(comment_params)
@@ -26,6 +27,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:gossip_id, :content)
+    params.require(:comment_model).permit(:content)
   end
 end

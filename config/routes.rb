@@ -11,8 +11,17 @@ Rails.application.routes.draw do
   get 'team', to: 'home#team' # Route pour la page de l'équipe
   
   # Gossip
-  get 'gossips/:id', to: 'home#gossips_show', as: 'gossips_show' # Route pour la page d'un potin
+  get 'gossips/:id', to: 'gossips#show', as: 'gossips_show' # Route pour la page d'un potin
 
   # Hello User
   get '/:name', to: 'home#hello' # Route pour la page d'accueil personnalisée
+
+
+resources :gossips do
+  resources :comments, only: [:create]
+end
+
+resources :gossip_models
+
+
 end
