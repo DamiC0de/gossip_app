@@ -1,0 +1,2 @@
+class GossipModel < ApplicationRecord
+end

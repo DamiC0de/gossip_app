@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def home
-    @gossips = Gossip.all
-    @comments = Comment.all
+    @gossips = GossipModel.all
+    @comments = CommentModel.all
   end
 
   def contact
@@ -11,9 +11,10 @@ class HomeController < ApplicationController
   end
 
   def gossips_show
-    @gossip = Gossip.find(params[:id].to_i)
-    @comments = Comment.find_by_gossip_id(@gossip.id)
+    @gossip = GossipModel.find(params[:id])
+    @comments = CommentModel.where(gossip_id: @gossip.id)
   end
+  
 
   def hello
     @name = params[:name].capitalize
